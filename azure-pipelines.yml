@@ -34,12 +34,16 @@ stages:
                provider: 'azurerm'
                command: 'plan'
                environmentServiceNameAzureRM: 'throntonServiceConnection'
+               workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/'
+               environmentServiceNameAzureRM: throntonServiceConnection
                
            - task: TerraformTaskV3@3
              inputs:
                provider: 'azurerm'
                command: 'apply'
                environmentServiceNameAzureRM: 'throntonServiceConnection'
+               workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/'
+               environmentServiceNameAzureRM: throntonServiceConnection
                
               
 
