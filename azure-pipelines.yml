@@ -19,7 +19,7 @@ stages:
               terraformVersion: 'latest'
             
       
-           - task: TerraformTaskV2@2
+           - task: TerraformTaskV4@4
              displayName: TF_Init
              inputs:
               provider: 'azurerm'
@@ -30,7 +30,7 @@ stages:
               backendAzureRmContainerName: 'exampletfstate'
               backendAzureRmKey: 'terrafor.tfstate'
               workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/'
-           - task: TerraformTaskV3@3
+           - task: TerraformTaskV4@4
              displayName: TF_Plan
              inputs:
                provider: 'azurerm'
@@ -39,7 +39,7 @@ stages:
                workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/'
               
                
-           - task: TerraformTaskV3@3
+           - task: TerraformTaskV4@4
              displayName: TF_Apply
              inputs:
                provider: 'azurerm'
