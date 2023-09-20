@@ -1,6 +1,15 @@
 # Introduction 
 TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
 
+# Prerequisites:
+
+1) Create App Registration
+1.1) Create Secret
+1.2) Make note of clientId, tenentId, SubscID , Subsc Name, secret etc
+1.3) Assign the App reg (service) to Contributor role in resource group service
+   
+3) Create Service connection , estabilsh the connection 
+
 # Getting Started
 TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
 1.	Installation process
