@@ -20,6 +20,7 @@ stages:
             
       
            - task: TerraformTaskV2@2
+             displayName: TF_Init
              inputs:
               provider: 'azurerm'
               command: 'init'
@@ -30,6 +31,7 @@ stages:
               backendAzureRmKey: 'terrafor.tfstate'
               workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/'
            - task: TerraformTaskV2@2
+             displayName: TF_Plan
              inputs:
                provider: 'azurerm'
                command: 'plan'
@@ -38,6 +40,7 @@ stages:
                environmentServiceNameAzureRM: throntonServiceConnection
                
            - task: TerraformTaskV3@3
+             displayName: TF_Apply
              inputs:
                provider: 'azurerm'
                command: 'apply'
