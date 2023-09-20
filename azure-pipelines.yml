@@ -30,14 +30,14 @@ stages:
               backendAzureRmContainerName: 'exampletfstate'
               backendAzureRmKey: 'terrafor.tfstate'
               workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/'
-           - task: TerraformTaskV2@2
+           - task: TerraformTaskV3@3
              displayName: TF_Plan
              inputs:
                provider: 'azurerm'
                command: 'plan'
                environmentServiceNameAzureRM: 'throntonServiceConnection'
                workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/'
-               environmentServiceNameAzureRM: throntonServiceConnection
+              
                
            - task: TerraformTaskV3@3
              displayName: TF_Apply
@@ -46,7 +46,7 @@ stages:
                command: 'apply'
                environmentServiceNameAzureRM: 'throntonServiceConnection'
                workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/'
-               environmentServiceNameAzureRM: throntonServiceConnection
+             
                
               
 
