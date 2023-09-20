@@ -3,8 +3,7 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- main
+trigger: none
 
 pool:
   vmImage: ubuntu-latest
@@ -15,9 +14,35 @@ stages:
     jobs:
       - job: terraform_install
         steps:
-          - task: TerraformInstaller@0
-            displayName: TF_Install
+           - task: TerraformInstaller@1
+             inputs:
+              terraformVersion: 'latest'
             
+      
+           - task: TerraformTaskV2@2
+             inputs:
+              provider: 'azurerm'
+              command: 'init'
+              backendServiceArm: 'throntonServiceConnection'
+              backendAzureRmResourceGroupName: 'thomasthorntoncloud'
+              backendAzureRmStorageAccountName: 'thotfstate678678'
+              backendAzureRmContainerName: 'exampletfstate'
+              backendAzureRmKey: 'terrafor.tfstate'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/'
+           - task: TerraformTaskV2@2
+             inputs:
+               provider: 'azurerm'
+               command: 'plan'
+               environmentServiceNameAzureRM: 'throntonServiceConnection'
+               
+           - task: TerraformTaskV3@3
+             inputs:
+               provider: 'azurerm'
+               command: 'apply'
+               environmentServiceNameAzureRM: 'throntonServiceConnection'
+               
               
+
+            
     
 
